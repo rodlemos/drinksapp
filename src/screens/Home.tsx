@@ -1,50 +1,33 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import Background from '../components/Background';
 import DrinkCard from '../components/DrinkCard';
 import Header from '../components/Header';
-
-
-const mock = [
-    {
-        id: '1',
-        image: 'https://github.com/rodlemos.png',
-        title: 'Acid',
-        alcohol: 'Alcoholic'
-    },
-    {
-        id: '2',
-        image: 'https://github.com/rodlemos.png',
-        title: 'Acid',
-        alcohol: 'Alcoholic'
-    },
-    {
-        id: '3',
-        image: 'https://github.com/rodlemos.png',
-        title: 'Acid',
-        alcohol: 'Alcoholic'
-    }
-]
+import theme from '../styles/theme';
 
 export default function Home() {
+
     return (
-        <Container>
-            <Header/>
+        <Background>
+            <Container>
+                <Header title="Home" />
 
-            <SearchBox>
-                <SearchTitle>Search for a cocktail</SearchTitle>
-                <SearchField/>
-            </SearchBox>
+                <SearchBox>
+                    <SearchTitle>Search for a cocktail</SearchTitle>
+                    <SearchField />
+                </SearchBox>
 
-            <Title>Cocktails</Title>
-            <Drinks 
-                data={mock}
-                keyExtractor={item=> item.id}
-                renderItem={({item})=> (
-                    <DrinkCard data={item} />
-                )}
-                showsVerticalScrollIndicator={false}
-            />
-        </Container>
+                <Title>Cocktails</Title>
+                {/* <Drinks
+                    data={drink}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => (
+                        <DrinkCard data={item} />
+                    )}
+                    showsVerticalScrollIndicator={false}
+                /> */}
+            </Container>
+        </Background>
     )
 }
 
@@ -53,11 +36,12 @@ const Container = styled.View`
 `;
 
 const Title = styled.Text`
-    font-size: 28px;
-    font-family: 'Dosis_700Bold';
-    color: white;
+    font-size: 30px;
+    font-family: ${theme.fonts.titles700};
+    color: ${theme.colors.text};
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 `;
 
 const Drinks = styled.FlatList`
@@ -72,15 +56,15 @@ const SearchBox = styled.View`
 `;
 
 const SearchTitle = styled.Text`
-    font-family: Dosis_500Medium;
+    font-family: ${theme.fonts.subtitles500};
     font-size: 22px;
-    color: white;
+    color: ${theme.colors.text};
 `;
 
 const SearchField = styled.TextInput`
     width: 65%;
     height: 44px;
-    background-color: rgba(255,255,255,0.1);
+    background-color: ${theme.colors.opacity};
     border-radius: 8px;
     margin-top: 5px;
     padding-left: 8px;
