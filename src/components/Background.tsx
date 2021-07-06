@@ -1,5 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { ReactNode } from 'react';
+import theme from '../styles/theme';
 
 type Props = {
     children: ReactNode
@@ -8,7 +9,7 @@ type Props = {
 export default function Background({children}:Props) {
     return (
         <LinearGradient
-            colors={['#293332','#252e2d']}
+            colors={[theme.colors.secundary, theme.colors.secundary2]}
             style={{flex: 1}}
         >
             {children}

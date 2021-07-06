@@ -1,15 +1,20 @@
-import React from 'react'
-import styled from 'styled-components/native'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import styled from 'styled-components/native';
+import theme from '../styles/theme';
 
-export default function Header() {
+type Props = {
+    title: string;
+}
+
+export default function Header({title}:Props) {
     return (
         <Container
-            colors={['#51be51','#498a49']}
+            colors={[theme.colors.primary3, theme.colors.primary4]}
             style={{paddingTop: getStatusBarHeight()}}
         >
-            <Title>Better things are coming -Logo-</Title>
+            <Title>{title}</Title>
         </Container>
     )
 }
@@ -23,6 +28,7 @@ const Container = styled(LinearGradient)`
 `;
 
 const Title = styled.Text`
-    font-family: Dosis_700Bold;
-    color: white;
+    font-size: 30px;
+    font-family: ${theme.fonts.titles700};
+    color: ${theme.colors.text};
 `;
